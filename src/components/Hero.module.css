@@ -1,0 +1,184 @@
+.hero {
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	overflow: hidden; /* Чтобы свечения не создавали горизонтальный скролл */
+	background-color: var(--bg-color);
+	transition: background-color 0.3s ease;
+	margin: 0;
+	padding: 0;
+}
+
+/* МАГИЯ ФОНА: светящиеся пятна */
+.glowTop {
+	position: absolute;
+	top: -100px;
+	right: -10%;
+	width: 600px;
+	height: 500px;
+	background: var(--accent-color);
+	border-radius: 50%;
+	filter: blur(120px);
+	opacity: 0.45;
+	z-index: 0;
+}
+
+:global([data-theme="light"]) .glowTop {opacity: 0.3;}
+:global([data-theme="light"]) .glowBottom {opacity: 0.25;}
+
+.glowBottom {
+	position: absolute;
+	bottom: -10%;
+	left: -10%;
+	width: 600px;
+	height: 400px;
+	background: #3B82F6; /* Синий акцент для контраста */
+	border-radius: 50%;
+	filter: blur(120px);
+	opacity: 0.45;
+	z-index: 0;
+}
+
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding:120px 20px 40px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 50px;
+	position: relative;
+	z-index: 1; 
+}
+
+.content {
+	flex: 1;
+	max-width: 600px;
+}
+
+.greeting {
+	font-size: 20px;
+	color: var(--accent-color);
+	font-weight: 600;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.title {
+	font-size: 64px;
+	line-height: 1.1;
+	margin-bottom: 20px;
+	font-weight: 800;
+}
+
+	.title span {
+		color: var(--accent-color);
+	}
+
+.description {
+	font-size: 18px;
+	color: var(--text-muted);
+	margin-bottom: 40px;
+	line-height: 1.6;
+}
+
+.buttons {
+	display: flex;
+	gap: 20px;
+}
+
+.btnPrimary, .btnSecondary {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 15px 30px;
+	border-radius: 30px;
+	font-weight: 600;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.btnPrimary {
+	background-color: var(--accent-color);
+	color: #fff;
+	border: none;
+}
+
+	.btnPrimary:hover {
+		background-color: var(--accent-hover);
+		transform: translateY(-3px);
+		box-shadow: 0 10px 20px rgba(244, 114, 182, 0.3);
+	}
+
+.btnSecondary {
+	background: transparent;
+	border: 2px solid var(--border-color);
+	color: var(--text-main);
+}
+
+	.btnSecondary:hover {
+		border-color: var(--accent-color);
+		color: var(--accent-color);
+		transform: translateY(-3px);
+	}
+
+.imageWrapper {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+	/* Свечение за фото */
+	.imageWrapper::before {
+		content: '';
+		position: absolute;
+		width: 350px;
+		height: 350px;
+		background: var(--accent-color);
+		border-radius: 50%;
+		filter: blur(80px);
+		opacity: 0.4;
+		z-index: -1;
+	}
+
+	.imageWrapper img {
+		width: 100%;
+		max-width: 400px;
+		border-radius: 30px;
+		object-fit: cover;
+		border: 4px solid var(--card-bg);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+	}
+
+/* --- Мобильная версия --- */
+@media (max-width: 900px) {
+	.container {
+		flex-direction: column-reverse;
+		text-align: center;
+		gap: 40px;
+		padding-top: 100px;
+	}
+
+	.title {
+		font-size: 48px;
+	}
+
+	.buttons {
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.imageWrapper img {
+		max-width: 300px;
+	}
+
+	/* Уменьшаем свечения на телефонах */
+	.glowTop, .glowBottom {
+		width: 300px;
+		height: 300px;
+		filter: blur(80px);
+	}
+}

@@ -1,0 +1,70 @@
+.contacts {
+	padding: 100px 0;
+	background-color: var(--card-bg);
+	border-top: 1px solid var(--border-color);
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 0 20px;
+	text-align: center;
+}
+
+.title {
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+
+	.title span {
+		color: var(--accent-color);
+	}
+
+.description {
+	font-size: 18px;
+	color: var(--text-muted);
+	margin-bottom: 40px;
+	line-height: 1.6;
+}
+
+.socials {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.socialBtn {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 15px 30px;
+	border-radius: 30px;
+	font-weight: 600;
+	font-size: 16px;
+	background: transparent;
+	border: 2px solid var(--border-color);
+	color: var(--text-main);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+	.socialBtn:hover {
+		background: var(--accent-color);
+		border-color: var(--accent-color);
+		color: #fff;
+		transform: translateY(-5px);
+		box-shadow: 0 10px 20px rgba(244, 114, 182, 0.3);
+	}
+
+/* Мобильная версия */
+@media (max-width: 600px) {
+	.socials {
+		flex-direction: column;
+	}
+
+	.socialBtn {
+		justify-content: center;
+		width: 100%;
+	}
+}
